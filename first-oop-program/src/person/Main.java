@@ -1,5 +1,4 @@
 package person;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -24,10 +23,18 @@ public class Main {
         double moneyAmount3 = c.getMoney();
         double moneyAmount4 = d.getMoney();
 
-        System.out.println(a.name + " имеет " + moneyAmount1 + " денег");
-        System.out.println(b.name + " имеет " + moneyAmount2 + " денег");
-        System.out.println(c.name + " имеет " + moneyAmount3 + " денег");
-        System.out.println(d.name + " имеет " + moneyAmount4 + " денег");
+//        System.out.println(a.getName() + " имеет " + moneyAmount1 + " денег");
+//        System.out.println(b.name + " имеет " + moneyAmount2 + " денег");
+//        System.out.println(c.name + " имеет " + moneyAmount3 + " денег");
+//        System.out.println(d.name + " имеет " + moneyAmount4 + " денег");
+
+
+        PensionFund pensionFund = new PensionFund("Pensionka", true, "2023 yoear", 466);
+        pensionFund.isNationalFund();
+        pensionFund.infoFund();
+
 
     }
 }
+
+

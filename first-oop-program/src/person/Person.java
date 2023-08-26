@@ -16,13 +16,13 @@ public class Person {
 //            6) Добавить поле "money" и создать метод getMoney, который делает return money (То есть просто возвращает количество денег у человека). Мы это тему еще не проходили, поэтому подсказки в личные сообщения просите спокойно.
 //            7) перед int money переменной поставить ключевое слово private. Описать, что произойдет в программе.
 
-    String name;
-    int age;
-    int height;
-    int weight;
+    private String name;
+    private int age;
+    private int height;
+    private double weight;
     private double money;
 
-    public Person(String name, int age, int height, int weight, double money) {
+    public Person(String name, int age, int height, double weight, double money) {
         this.name = name;
         this.age = age;
         this.height = height;
@@ -35,14 +35,46 @@ public class Person {
     }
 
     public void goWork() {
-       if (age < 18 || age >= 70){
-           System.out.println("Отдыхаю дома!");
-       }
-       else {
-           System.out.println("Работаю!");
-       }
+        if (age < 18 || age >= 70) {
+            System.out.println("Отдыхаю дома!");
+        } else {
+            System.out.println("Работаю!");
+        }
     }
-    public double getMoney(){
+
+    public double getMoney() {
         return money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }
