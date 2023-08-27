@@ -20,6 +20,6 @@ public class Pensioner extends Person{
     @Override
     public void die(){
         double x = (getAge()-50)*pension;
-        System.out.println(x);
+        System.out.println("Этот человек умер, он зарабоотал: " + x);
     }
 }

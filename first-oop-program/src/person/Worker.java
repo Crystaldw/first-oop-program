@@ -12,6 +12,7 @@ public class Worker extends Person {
     }
 
     public Double getMinSolary() {
+        System.out.println("Минимальная зарплата: " + minSolary);
         return minSolary;
     }
 
@@ -20,6 +21,7 @@ public class Worker extends Person {
     }
 
     public Double getMaxSolary() {
+        System.out.println("Максимальная зарплата: " + maxSolary);
         return maxSolary;
     }
 
