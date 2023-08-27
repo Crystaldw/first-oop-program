@@ -22,7 +22,7 @@ public class PensionFund {
         this.nameFund = nameFund;
     }
 
-    public boolean isNationalFund() {
+    public boolean getNationalFund() {
         return nationalFund;
     }
 

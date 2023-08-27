@@ -3,10 +3,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Person a = new Person("Alexei", 43, 185, 85, 344.4);
+        Person a = new Person("Alexei", 72, 185, 85, 344.4);
         Person b = new Person("Oxana", 44, 155, 50, 45);
         Person c = new Person("Diana", 18, 165, 55, 34.4);
-        Person d = new Person("Ihor", 27, 175, 75, 100.45);
+        Person d = new Person("Ihor", 89, 175, 75, 100.45);
 
 
         a.getInfo();
@@ -30,8 +30,15 @@ public class Main {
 
 
         PensionFund pensionFund = new PensionFund("Pensionka", true, "2023 yoear", 466);
-        pensionFund.isNationalFund();
+        pensionFund.getNationalFund();
         pensionFund.infoFund();
+
+        a.die();
+        b.die();
+        c.die();
+        d.die();
+
+        a.goWork();
 
 
     }

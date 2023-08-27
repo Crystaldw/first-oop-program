@@ -77,4 +77,8 @@ public class Person {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public void die(){
+        System.out.println("Человек погиб.");
+    }
 }
