@@ -2,13 +2,15 @@ package car;
 
 import java.util.Objects;
 
-public class Car {
+public abstract class Car {
 
     private int id;
     private String model;
     private String color;
     private int currentSpeed;
-    private int coast;
+    private int cost;
+
+    public final static int MAX_SPEED = 60;
 
     public Car(int id, String model, String color, int currentSpeed) {
         this.id = id;
@@ -17,9 +19,12 @@ public class Car {
         this.currentSpeed = currentSpeed;
     }
 
-    public void drift() {
-        System.out.println("Супер крутой дрифт...");
-    }
+//   public Car(int id, String model){
+//        this.id = id;
+//        this.model = model;
+//   }
+
+    public abstract void drift();
 
     public void getInfo() {
         System.out.println();
@@ -65,30 +70,37 @@ public class Car {
             this.currentSpeed = currentSpeed;
         }
     }
+
     public void startEngine() {
         check();
         startAfterCheck();
     }
+
     public void check() {
         System.out.println("Проверить топливо");
         System.out.println("Проверить электронику");
     }
 
-    private void startAfterCheck(){
+    private void startAfterCheck() {
         System.out.println("Зажигание");
         System.out.println("Запуск двигателя");
         System.out.println(">>>Двигатель запущен");
     }
 
     public int getCoast() {
-        return coast;
+        return cost;
     }
 
     public void setCoast(int coast) {
-        this.coast = coast;
+        this.cost = coast;
     }
-    public void changeCoast(int sale){
-        coast = coast - coast * sale/100;
+
+    public void changeCost(int sale) {//15 = 15%
+        cost = cost - cost * sale / 100;
+    }
+    public void changeCost (double sale){//0.15 = 15%
+        double answer = cost - cost * sale;
+        cost = (int) answer;
     }
 
     @Override
@@ -97,10 +109,35 @@ public class Car {
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + currentSpeed;
-        result = 31 * result + coast;
+        result = 31 * result + cost;
         return result;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (id != car.id) return false;
+        if (currentSpeed != car.currentSpeed) return false;
+        if (cost != car.cost) return false;
+        if (!Objects.equals(model, car.model)) return false;
+        return Objects.equals(color, car.color);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", currentSpeed=" + currentSpeed +
+                ", coast=" + cost +
+                '}';
+    }
     // override - переопределение метода
+    // overLoading
 }
 

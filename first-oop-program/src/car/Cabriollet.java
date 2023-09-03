@@ -1,6 +1,6 @@
 package car;
 
-public class Cabriollet extends Car {
+public class Cabriollet extends Car implements Refuelable{
 public boolean isOpend;
 
     public Cabriollet(int id, String model, String color, int currentSpeed, boolean isOpend) {
@@ -14,5 +14,10 @@ public boolean isOpend;
     public void  drift(){
         System.out.println("КАБРИОЛЕТ не для дрифта!");
     }
+
+    @Override
+    public void refuel() {
+        System.out.println("Кабриолет заправили бензином 95+");
     }
+}
 
