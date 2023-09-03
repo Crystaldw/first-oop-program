@@ -2,7 +2,7 @@ package car;
 
 import java.util.Objects;
 
-public abstract class Car {
+public class Car {
 
     private int id;
     private String model;
@@ -24,7 +24,9 @@ public abstract class Car {
 //        this.model = model;
 //   }
 
-    public abstract void drift();
+    public void drift() {
+        System.out.println("Super Drift");
+    }
 
     public void getInfo() {
         System.out.println();
@@ -98,33 +100,27 @@ public abstract class Car {
     public void changeCost(int sale) {//15 = 15%
         cost = cost - cost * sale / 100;
     }
-    public void changeCost (double sale){//0.15 = 15%
+
+    public void changeCost(double sale) {//0.15 = 15%
         double answer = cost - cost * sale;
         cost = (int) answer;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (model != null ? model.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + currentSpeed;
-        result = 31 * result + cost;
-        return result;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Car car = (Car) o;
+        return id == car.id
+                && currentSpeed == car.currentSpeed
+                && cost == car.cost
+                && Objects.equals(model, car.model)
+                && Objects.equals(color, car.color);
+    }
 
-        if (id != car.id) return false;
-        if (currentSpeed != car.currentSpeed) return false;
-        if (cost != car.cost) return false;
-        if (!Objects.equals(model, car.model)) return false;
-        return Objects.equals(color, car.color);
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, model, color, currentSpeed, cost);
     }
 
     @Override
@@ -137,7 +133,7 @@ public abstract class Car {
                 ", coast=" + cost +
                 '}';
     }
-    // override - переопределение метода
-    // overLoading
+//     override - переопределение метода
+//     overLoading
 }
 

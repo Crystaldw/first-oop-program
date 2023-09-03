@@ -38,10 +38,11 @@ public class Main {
         Pensioner pensioner = new Pensioner("Dmitrii", 89, 172, 94, 300,350.5);
         pensioner.die();
 
-        Worker worker = new Worker("Olga", 41,159,50,500, 100.5,300.45);
+        Worker worker = new Worker("Olga", 46,159,50,500, 100.5,300.45);
         worker.getMinSolary();
         worker.getMaxSolary();
         worker.die();
+        pensioner.die();
 
     }
 }

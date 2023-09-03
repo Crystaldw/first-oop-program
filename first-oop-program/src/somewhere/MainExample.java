@@ -34,8 +34,8 @@ public class MainExample {
         secindLandrover.doSomething();
 
 
-        a.drift();
-        b.drift();
+//        a.drift();
+//        b.drift();
 
         Airplane airplane = new Airplane();
         Refuelable transport = new Airplane();
