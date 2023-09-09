@@ -2,15 +2,25 @@ package car;
 
 import java.util.Objects;
 
-public class Car {
+import static car.Types.*;
 
-    private int id;
-    private String model;
+public abstract class Car {
+
+    private final int id;
+    private final String model;
     private String color;
     private int currentSpeed;
     private int cost;
 
-    public final static int MAX_SPEED = 60;
+    public final static int MAX_SPEED = 160;
+
+    private int fuel;
+    private String type;
+    private String TransmisionType;
+
+    //механическая
+    //автомат
+    //искуственный интелект
 
     public Car(int id, String model, String color, int currentSpeed) {
         this.id = id;
@@ -19,14 +29,17 @@ public class Car {
         this.currentSpeed = currentSpeed;
     }
 
-//   public Car(int id, String model){
-//        this.id = id;
-//        this.model = model;
-//   }
-
-    public void drift() {
-        System.out.println("Super Drift");
+    public Car(int id, String model) {
+        this.id = id;
+        this.model = model;
     }
+
+    public Car(){
+        id=0;
+        model="";
+    }
+
+    public abstract void drift();
 
     public void getInfo() {
         System.out.println();
@@ -38,13 +51,42 @@ public class Car {
     }
 
     public void go(int speed) {
-        if (currentSpeed == 0) {
-            System.out.println("Машина начала ехать со скоростью " + speed);
-        } else {
-            System.out.println("Машина начала ехать со скоростью " + speed);
-        }
         currentSpeed = speed;
+        switch (type){
+            case  MECHANIC:
+                System.out.println("Немного заглохли, но поехали");
+                break;
+            case AUTO:
+                System.out.println("Отлично поехали");
+                break;
+            case AI:
+                System.out.println();
+        }
 
+        }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public String getTransmisionType() {
+        return TransmisionType;
+    }
+
+    public void setTransmisionType(String transmisionType) {
+        TransmisionType = transmisionType;
     }
 
     public void setColor(String color) { //запись, set - установить
@@ -71,11 +113,14 @@ public class Car {
         if (currentSpeed >= 0 && currentSpeed < 500) {
             this.currentSpeed = currentSpeed;
         }
+
     }
 
     public void startEngine() {
         check();
-        startAfterCheck();
+        if (currentSpeed == 0) {
+            startAfterCheck();
+        }
     }
 
     public void check() {
@@ -97,6 +142,14 @@ public class Car {
         this.cost = coast;
     }
 
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
     public void changeCost(int sale) {//15 = 15%
         cost = cost - cost * sale / 100;
     }
@@ -111,11 +164,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return id == car.id
-                && currentSpeed == car.currentSpeed
-                && cost == car.cost
-                && Objects.equals(model, car.model)
-                && Objects.equals(color, car.color);
+        return id == car.id && currentSpeed == car.currentSpeed && cost == car.cost && Objects.equals(model, car.model) && Objects.equals(color, car.color);
     }
 
     @Override
@@ -125,15 +174,10 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", color='" + color + '\'' +
-                ", currentSpeed=" + currentSpeed +
-                ", coast=" + cost +
-                '}';
+        return "Car{" + "id=" + id + ", model='" + model + '\'' + ", color='" + color + '\'' + ", currentSpeed=" + currentSpeed + ", cost=" + cost + '}';
     }
-//     override - переопределение метода
+
+    //     override - переопределение метода
 //     overLoading
 }
 

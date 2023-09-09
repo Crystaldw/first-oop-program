@@ -7,9 +7,17 @@ public class Airplane implements Refuelable{
 
     @Override
     public void refuel() {
-        System.out.println("Самолет заправляют только керосином");
+        System.out.println("Самолет заправляют только керосином + бензином АИ100");
     }
     public void fly(){
         System.out.println("Лети");
+    }
+
+    @Override
+    public String toString() {
+        return "Airplane{" +
+                "type='" + type + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
+                '}';
     }
 }

@@ -1,6 +1,8 @@
 package person;
 
-public class Person {
+import java.util.Objects;
+
+public abstract class Person {
     private String name;
     private int age;
     private int height;
@@ -63,7 +65,50 @@ public class Person {
         this.weight = weight;
     }
 
+
+
+
     public void die(){
         System.out.println("Человек погиб.");
+    }
+    public abstract void die(int years);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (age != person.age) return false;
+        if (height != person.height) return false;
+        if (Double.compare(weight, person.weight) != 0) return false;
+        if (Double.compare(money, person.money) != 0) return false;
+        return Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name != null ? name.hashCode() : 0;
+        result = 31 * result + age;
+        result = 31 * result + height;
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(money);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", money=" + money +
+                '}';
     }
 }

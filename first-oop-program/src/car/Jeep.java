@@ -2,20 +2,17 @@ package car;
 
 public class Jeep extends Car implements Refuelable{
 
-    public Jeep(int id, String model, String color, int currentSpeed) {
-        super(id, model, color, currentSpeed);
-    }
-
     @Override
     public void drift() {
         System.out.println("Jeep не дрифтит");
     }
     public void doSomething(){
-        System.out.println("Super!!");
+        System.out.println("Тестовое сообщение");
     }
 
     @Override
     public void refuel() {
+        setFuel(100);
         System.out.println("Джип заправили ДТ");
     }
 

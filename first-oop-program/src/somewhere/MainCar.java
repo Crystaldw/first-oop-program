@@ -8,9 +8,14 @@ public class MainCar {
 
     public static void main(String[] args) {
 
-        //Car car = new Car();
+//        Car car = new Car();
         Cabriollet cabriollet = new Cabriollet(1, "cabri", "red", 4, true);
-//        Jeep jeep = new Jeep();
+        Jeep jeep = new Jeep();
+
+
+//        car.drift();
+        cabriollet.drift();
+        jeep.drift();
 
     }
 }
