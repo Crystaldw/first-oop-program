@@ -2,18 +2,21 @@ package person;
 
 import java.util.Objects;
 
-public class Worker extends Person {
+public class Worker extends Person implements AbleToCalculatePension {
 
-    private Double minSolary; //минимальная зарплата
-    private Double maxSolary; //максимальная зарплата
+    private static final double PENSION_COEFFICIENT = 0.25;
 
-    public Worker(String name, int age, int height, double weight, double money, Double minSolary, Double maxSolary) {
-        super(name, age, height, weight, money);
-        this.minSolary = minSolary;
-        this.maxSolary = maxSolary;
+    private int minSalary; //минимальная зарплата
+    private int maxSalary; //максимальная зарплата
+
+    public Worker(String name, Gender gender, int age, int height, double weight, double money, int minSalary, int maxSalary) {
+        super(name, gender, age, height, weight, money);
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
     }
 
-    public Worker(String name, int height, double weight, double money, Double minSolary, Double maxSolary) {
+
+    public Worker(String name, int height, double weight, double money, int minSalary, int maxSalary) {
         super(name, 0, height, weight, money);
     }
 
@@ -21,22 +24,53 @@ public class Worker extends Person {
         super(name, age, 0, 0, 0);
     }
 
-    public Double getMinSolary() {
-        return minSolary;
+    public Worker(int minSalary, int maxSalary) {
+        super(null, 0, 0, 0, 0);
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
     }
 
-    public void setMinSolary(Double minSolary) {
-        this.minSolary = minSolary;
+    public Worker(Gender gender, int minSalary, int maxSalary) {
+        super(null, gender, 0, 0, 0, 0);
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
+
+
     }
 
-    public Double getMaxSolary() {
-        System.out.println("Максимальная зарплата: " + maxSolary);
-        return maxSolary;
+    public double getMinSalary() {
+        return minSalary;
     }
 
-    public void setMaxSolary(Double maxSolary) {
-        this.maxSolary = maxSolary;
+    public void setMinSalary(double minSalary) {
+        this.minSalary = (int) minSalary;
     }
+
+    public Double getMaxSalary() {
+        System.out.println("Максимальная зарплата: " + maxSalary);
+        return (double) maxSalary;
+    }
+
+    public void setMaxSalary(double maxSalary) {
+        this.maxSalary = (int) maxSalary;
+    }
+
+    @Override
+    public double calculatePension() {
+        if (getGender() == null) {
+            return 0.0;
+        }
+        if (getGender() == Gender.MALE) {
+            double averageSalary = CalculatorUtils.calculateAverage(minSalary, maxSalary);
+            return averageSalary * PENSION_COEFFICIENT;
+        } else if (getGender() == Gender.FEMALE) {
+            double averageSalary = CalculatorUtils.calculateAverage(minSalary / 2, maxSalary * 2);
+            return averageSalary * PENSION_COEFFICIENT;
+        }
+        return 0.0;
+    }
+
+
 
     @Override
     public void die() {
@@ -55,22 +89,23 @@ public class Worker extends Person {
 
         Worker worker = (Worker) o;
 
-        if (!Objects.equals(minSolary, worker.minSolary)) return false;
-        return Objects.equals(maxSolary, worker.maxSolary);
+        if (!Objects.equals(minSalary, worker.minSalary)) return false;
+        return Objects.equals(maxSalary, worker.maxSalary);
     }
 
     @Override
     public int hashCode() {
-        int result = minSolary != null ? minSolary.hashCode() : 0;
-        result = 31 * result + (maxSolary != null ? maxSolary.hashCode() : 0);
+        int result = super.hashCode();
+        result = 31 * result + minSalary;
+        result = 31 * result + maxSalary;
         return result;
     }
 
     @Override
     public String toString() {
         return "Worker{" +
-                "minSolary=" + minSolary +
-                ", maxSolary=" + maxSolary +
+                "minSolary=" + minSalary +
+                ", maxSolary=" + maxSalary +
                 '}';
     }
 }

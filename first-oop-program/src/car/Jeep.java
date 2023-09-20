@@ -2,6 +2,8 @@ package car;
 
 public class Jeep extends Car implements Refuelable{
 
+    public final static  int MAX_SPEED = 60;
+
     @Override
     public void drift() {
         System.out.println("Jeep не дрифтит");

@@ -4,10 +4,20 @@ import java.util.Objects;
 
 public abstract class Person {
     private String name;
+    private Gender gender;
     private int age;
     private int height;
     private double weight;
     private double money;
+
+    public Person(String name, Gender gender, int age, int height, double weight, double money) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.money = money;
+    }
 
     public Person(String name, int age, int height, double weight, double money) {
         this.name = name;
@@ -29,12 +39,21 @@ public abstract class Person {
         }
     }
 
+
     public double getMoney() {
         return money;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void setName(String name) {
@@ -66,7 +85,7 @@ public abstract class Person {
     }
 
 
-
+//    public abstract double calculatePension();
 
     public void die(){
         System.out.println("Человек погиб.");
@@ -84,7 +103,8 @@ public abstract class Person {
         if (height != person.height) return false;
         if (Double.compare(weight, person.weight) != 0) return false;
         if (Double.compare(money, person.money) != 0) return false;
-        return Objects.equals(name, person.name);
+        if (!Objects.equals(name, person.name)) return false;
+        return gender == person.gender;
     }
 
     @Override
@@ -92,6 +112,7 @@ public abstract class Person {
         int result;
         long temp;
         result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + age;
         result = 31 * result + height;
         temp = Double.doubleToLongBits(weight);
@@ -105,6 +126,7 @@ public abstract class Person {
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
+                ", gender=" + gender +
                 ", age=" + age +
                 ", height=" + height +
                 ", weight=" + weight +

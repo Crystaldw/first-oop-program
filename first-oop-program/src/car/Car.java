@@ -2,25 +2,23 @@ package car;
 
 import java.util.Objects;
 
-import static car.Types.*;
-
 public abstract class Car {
 
-    private final int id;
+    public int id;
     private final String model;
     private String color;
     private int currentSpeed;
+
     private int cost;
 
-    public final static int MAX_SPEED = 160;
-
     private int fuel;
-    private String type;
-    private String TransmisionType;
+
+    private TransmisionType type;
 
     //механическая
     //автомат
     //искуственный интелект
+    public final static int MAX_SPEED = 160;
 
     public Car(int id, String model, String color, int currentSpeed) {
         this.id = id;
@@ -34,9 +32,9 @@ public abstract class Car {
         this.model = model;
     }
 
-    public Car(){
-        id=0;
-        model="";
+    public Car() {
+        id = 0;
+        model = "";
     }
 
     public abstract void drift();
@@ -52,49 +50,47 @@ public abstract class Car {
 
     public void go(int speed) {
         currentSpeed = speed;
-        switch (type){
-            case  MECHANIC:
+
+
+        if (type == null) {
+            return;
+        }
+
+        switch (type) {
+            case MECHANIC:
                 System.out.println("Немного заглохли, но поехали");
                 break;
             case AUTO:
                 System.out.println("Отлично поехали");
                 break;
             case AI:
-                System.out.println();
+                System.out.println("Я даже отпустил руль");
+                break;
         }
+    }
 
-        }
-
-    public String getType() {
+    public TransmisionType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TransmisionType type) {
         this.type = type;
     }
 
-    public int getCost() {
-        return cost;
+    public int getFuel() {
+        return fuel;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
     }
 
-    public String getTransmisionType() {
-        return TransmisionType;
-    }
-
-    public void setTransmisionType(String transmisionType) {
-        TransmisionType = transmisionType;
-    }
-
-    public void setColor(String color) { //запись, set - установить
-        this.color = color;
-    }
-
-    public String getColor() { //чтение, get - получить
+    public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getId() {
@@ -113,7 +109,9 @@ public abstract class Car {
         if (currentSpeed >= 0 && currentSpeed < 500) {
             this.currentSpeed = currentSpeed;
         }
-
+        else {
+            System.out.println("Скорость не была изменена");
+        }
     }
 
     public void startEngine() {
@@ -123,10 +121,12 @@ public abstract class Car {
         }
     }
 
-    public void check() {
+    private void check() {
         System.out.println("Проверить топливо");
         System.out.println("Проверить электронику");
     }
+
+    //сигнатура = название метода + все параметры
 
     private void startAfterCheck() {
         System.out.println("Зажигание");
@@ -134,20 +134,17 @@ public abstract class Car {
         System.out.println(">>>Двигатель запущен");
     }
 
-    public int getCoast() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCoast(int coast) {
-        this.cost = coast;
-    }
-
-    public int getFuel() {
-        return fuel;
-    }
-
-    public void setFuel(int fuel) {
-        this.fuel = fuel;
+    public void setCost(int cost) {
+        if(type !=null){
+            this.cost = (int) (cost* type.getCoeficientOfCost());
+        }
+        else {
+            this.cost = cost;
+        }
     }
 
     public void changeCost(int sale) {//15 = 15%
@@ -163,21 +160,41 @@ public abstract class Car {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Car car = (Car) o;
-        return id == car.id && currentSpeed == car.currentSpeed && cost == car.cost && Objects.equals(model, car.model) && Objects.equals(color, car.color);
+
+        if (id != car.id) return false;
+        if (currentSpeed != car.currentSpeed) return false;
+        if (cost != car.cost) return false;
+        if (fuel != car.fuel) return false;
+        if (!Objects.equals(model, car.model)) return false;
+        if (!Objects.equals(color, car.color)) return false;
+        return type == car.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, model, color, currentSpeed, cost);
+        int result = id;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + currentSpeed;
+        result = 31 * result + cost;
+        result = 31 * result + fuel;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Car{" + "id=" + id + ", model='" + model + '\'' + ", color='" + color + '\'' + ", currentSpeed=" + currentSpeed + ", cost=" + cost + '}';
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", currentSpeed=" + currentSpeed +
+                ", cost=" + cost +
+                ", fuel=" + fuel +
+                ", type=" + type +
+                '}';
     }
-
-    //     override - переопределение метода
-//     overLoading
 }
 

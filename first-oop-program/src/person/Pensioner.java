@@ -19,6 +19,7 @@ public class Pensioner extends Person {
         this.pension = pension;
     }
 
+
     @Override
     public void die() {
         double x = (getAge() - 50) * pension;
