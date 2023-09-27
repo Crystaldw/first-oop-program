@@ -27,16 +27,25 @@ public class MyArrayList {
 
         array = newArray;
     }
+
     //contains():
     public boolean contains(int element) {
         for (int i = 0; i < size; i++) {
-            if(array[i]==element){
+            if (array[i] == element) {
                 return true;
             }
         }
         return false;
     }
 
+
+    public void remove(int index) {
+        for (int i = index; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        array[array.length - 1] = 0;
+        size--;
+    }
 
 
     //size():
