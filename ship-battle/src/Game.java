@@ -1,36 +1,42 @@
 import java.util.Scanner;
 
 public class Game {
-    private MesagePrinter mesagePrinter;
-    private Scanner scanner;
-    private final static int SHOTS_FIRED = 2;
-
-    private int counter = 0;
+    private final MesagePrinter mesagePrinter;
+    private final Scanner scanner;
+    private final static int SHOTS = 10;
+    private int counter;
 
     public Game(MesagePrinter mesagePrinter, Scanner scanner) {
         this.mesagePrinter = mesagePrinter;
         this.scanner = scanner;
     }
 
-    public Game() {
-
+    public void startGame() {
+        mesagePrinter.printStart();
     }
 
     public void start(Field field) {
-
-        for (int i = 0; i < SHOTS_FIRED; i++) {
-
-            mesagePrinter.printInfo();
-            int row = scanner.nextInt();
-            mesagePrinter.printSecondNumber();
-            int column = scanner.nextInt();
+        startGame();
+        for (int i = 0; i < SHOTS; i++) {
+            mesagePrinter.printCoordinates();
+            int coordinates = scanner.nextInt();
+            int row = coordinates / 10;
+            int column = coordinates % 10;
 
             boolean result = field.checkCell(row, column);
+
             if (result) {
-                System.out.println("Молодец");
+                mesagePrinter.printWinMessage();
+                counter++;
             } else {
-                System.out.println("Промах");
+                mesagePrinter.printLoseMessage();
             }
         }
+        gameOver();
+    }
+
+    public void gameOver() {
+        mesagePrinter.printEndGame(counter);
+
     }
 }

@@ -1,14 +1,33 @@
-//package person;
+package person;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+//        Worker daniil = new Worker();
+//        daniil.setMinSalary(1000);
+//        daniil.swtMaxSalary(10000);
+//        daniil.setGender(Gender.FEMALE);
+//
+//        Worker anna = new Worker();
+//        anna.setMinSalary(1000);
+//        anna.swtMaxSalary(10000);
+//        anna.setGender(Gender.MALE);
 //
 //
-//public class Main {
-//
-//    public static void main(String[] args) {
-//
-////        Person a = new Person("Alexei", 43, 185, 85, 344.4);
-////        Person b = new Person("Oxana", 44, 155, 50, 45);
-////        Person c = new Person("Diana", 18, 165, 55, 34.4);
-////        Person d = new Person("Ihor", 27, 175, 75, 100.45);
+//        List<Worker>workerList = new ArrayList<>();
+//        workerList.add(anna);
+//        workerList.add(daniil);
+    }
+
+//        Person a = new Person("Alexei", 43, 185, 85, 344.4);
+//        Person b = new Person("Oxana", 44, 155, 50, 45);
+//        Person c = new Person("Diana", 18, 165, 55, 34.4);
+//        Person d = new Person("Ihor", 27, 175, 75, 100.45);
 //
 //
 ////        a.getInfo();
@@ -83,3 +102,4 @@
 //
 //
 //
+    }

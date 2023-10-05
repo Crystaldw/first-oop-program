@@ -1,5 +1,6 @@
 package person;
 
+import java.util.List;
 import java.util.Objects;
 
 public class PensionFund implements AbleToCalculatePension {
@@ -7,13 +8,21 @@ public class PensionFund implements AbleToCalculatePension {
     private String nameFund; //название пенсионного фонда
     private boolean isState; //госсударственный или нет
     private String data; //дата создания
-    private int participantsFund; //количество участников фонда
+    private List<Worker> persons;
 
-    public PensionFund(String nameFund, boolean nationalFund, String data, int participantsFund) {
+    public PensionFund(String nameFund, boolean isState, String data, List<Worker> persons) {
         this.nameFund = nameFund;
-        this.isState = nationalFund;
+        this.isState = isState;
         this.data = data;
-        this.participantsFund = participantsFund;
+        this.persons = persons;
+    }
+
+    public List<Worker> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Worker> persons) {
+        this.persons = persons;
     }
 
     public PensionFund(boolean nationalFund) {
@@ -45,19 +54,14 @@ public class PensionFund implements AbleToCalculatePension {
 //        this.data = data;
 //    }
 
-    public int getParticipantsFund() {
-        return participantsFund;
-    }
 
-    public void setParticipantsFund(int participantsFund) {
-        this.participantsFund = participantsFund;
-    }
 
     public void infoFund() {
+        System.out.println("Имя фонда " +nameFund);
         if (isState == true) {
-            System.out.println("Фонд используют " + participantsFund / 1000 + " тыс. человек");
+            System.out.println("Фонд используют " + persons.size() / 1000 + " тыс. человек");
         } else {
-            System.out.println("Фонд используют " + participantsFund + " человек");
+            System.out.println("Фонд используют " + persons.size() + " человек");
         }
     }
 
@@ -73,7 +77,6 @@ public class PensionFund implements AbleToCalculatePension {
         }
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,9 +85,9 @@ public class PensionFund implements AbleToCalculatePension {
         PensionFund that = (PensionFund) o;
 
         if (isState != that.isState) return false;
-        if (participantsFund != that.participantsFund) return false;
         if (!Objects.equals(nameFund, that.nameFund)) return false;
-        return Objects.equals(data, that.data);
+        if (!Objects.equals(data, that.data)) return false;
+        return Objects.equals(persons, that.persons);
     }
 
     @Override
@@ -92,18 +95,21 @@ public class PensionFund implements AbleToCalculatePension {
         int result = nameFund != null ? nameFund.hashCode() : 0;
         result = 31 * result + (isState ? 1 : 0);
         result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + participantsFund;
+        result = 31 * result + (persons != null ? persons.hashCode() : 0);
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "PensionFund{" +
-                "nameFund='" + nameFund + '\'' +
-                ", nationalFund=" + isState +
-                ", data='" + data + '\'' +
-                ", participantsFund=" + participantsFund +
-                '}';
+    public double calculateMedianPension() {
+        if (persons == null || persons.size() == 0) {
+            return 0.0;
+        }
+
+        double sum = 0.0;
+        for (Worker worker : persons) {
+            sum += worker.calculatePension();
+        }
+        return sum/persons.size();
+
     }
 
     @Override

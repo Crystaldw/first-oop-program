@@ -1,9 +1,11 @@
+import java.util.StringJoiner;
+
 public class Cell {
 
     private boolean isShip;
 
-    public Cell(boolean isFree) {
-        this.isShip = isFree;
+    public Cell(boolean isShip) {
+        this.isShip = isShip;
     }
 
     public boolean isShip() {
@@ -16,10 +18,23 @@ public class Cell {
 
     @Override
     public String toString() {
-        if (isShip) {
-            return "\uD83D\uDEA2";
-        } else {
-            return "";
-        }
+        return "Cell{" +
+                "isShip=" + isShip +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cell cell = (Cell) o;
+
+        return isShip == cell.isShip;
+    }
+
+    @Override
+    public int hashCode() {
+        return (isShip ? 1 : 0);
     }
 }

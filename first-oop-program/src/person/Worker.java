@@ -38,6 +38,7 @@ public class Worker extends Person implements AbleToCalculatePension {
 
     }
 
+
     public double getMinSalary() {
         return minSalary;
     }
@@ -107,5 +108,8 @@ public class Worker extends Person implements AbleToCalculatePension {
                 "minSolary=" + minSalary +
                 ", maxSolary=" + maxSalary +
                 '}';
+    }
+
+    public void swtMaxSalary(int i) {
     }
 }

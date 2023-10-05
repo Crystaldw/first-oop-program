@@ -2,16 +2,26 @@ package car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 
 public class GasStation {
 
     private List<Cabriollet> cabriollets;
     private Set<EngineType> avaliableEngineTypes;
+    private Queue<Cabriollet> cabriolletQueue;
 
     public void refuel(Refuelable a) {
         System.out.println("К заправке подьехал " + a.toString());
         a.refuel();
+    }
+    public void refuelNext(){
+        if (cabriolletQueue==null){
+            return;
+        }
+        Cabriollet cabriollet = cabriolletQueue.poll();
+        System.out.println("Заправляем машину "+ cabriollet);
+        cabriollet.refuel();
     }
 
     public void printInfoAboutQueue() {
@@ -53,5 +63,13 @@ public class GasStation {
 
     public void setAvaliableEngineTypes(Set<EngineType> avaliableEngineTypes) {
         this.avaliableEngineTypes = avaliableEngineTypes;
+    }
+
+    public Queue<Cabriollet> getCabriolletQueue() {
+        return cabriolletQueue;
+    }
+
+    public void setCabriolletQueue(Queue<Cabriollet> cabriolletQueue) {
+        this.cabriolletQueue = cabriolletQueue;
     }
 }
