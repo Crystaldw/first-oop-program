@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Car {
 
     public int id;
-    private final String model;
+    private String model;
     private String color;
     private int currentSpeed;
 
@@ -47,6 +47,7 @@ public abstract class Car {
         System.out.println("Цвет машины " + color);
         System.out.println();
     }
+
 
     public void go(int speed) {
         currentSpeed = speed;
@@ -119,6 +120,10 @@ public abstract class Car {
         if (currentSpeed == 0) {
             startAfterCheck();
         }
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     private void check() {

@@ -1,6 +1,7 @@
 package person;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Worker extends Person implements AbleToCalculatePension {
 
@@ -8,6 +9,7 @@ public class Worker extends Person implements AbleToCalculatePension {
 
     private int minSalary; //минимальная зарплата
     private int maxSalary; //максимальная зарплата
+    private Set<Proffession> proffessions;
 
     public Worker(String name, Gender gender, int age, int height, double weight, double money, int minSalary, int maxSalary) {
         super(name, gender, age, height, weight, money);
@@ -70,7 +72,6 @@ public class Worker extends Person implements AbleToCalculatePension {
         }
         return 0.0;
     }
-
 
 
     @Override
