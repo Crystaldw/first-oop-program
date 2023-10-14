@@ -1,4 +1,4 @@
-package homework;
+package homework.hanoitower;
 
 public class CountOccurrences {
 

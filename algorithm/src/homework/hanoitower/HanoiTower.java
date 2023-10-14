@@ -1,4 +1,4 @@
-package homework;
+package homework.hanoitower;
 
 public class HanoiTower {
     public static void hanoi(int n, char from, char to, char aux) {
