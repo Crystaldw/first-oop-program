@@ -5,7 +5,9 @@ import java.util.Set;
 
 public class Worker extends Person implements AbleToCalculatePension {
 
-    private static final double PENSION_COEFFICIENT = 0.25;
+    private final static double PENSION_COEFFICIENT = 0.25;
+    private final static double ADDITIONAL_COEFFICIENT = 1.05;
+    private final static int COUNT_OF_PROFS = 3;
 
     private int minSalary; //минимальная зарплата
     private int maxSalary; //максимальная зарплата
@@ -58,19 +60,37 @@ public class Worker extends Person implements AbleToCalculatePension {
         this.maxSalary = (int) maxSalary;
     }
 
+    public Set<Proffession> getProffessions() {
+        return proffessions;
+    }
+
+    public void setProffessions(Set<Proffession> proffessions) {
+        this.proffessions = proffessions;
+    }
+
     @Override
     public double calculatePension() {
+        Gender gender = getGender();
+
         if (getGender() == null) {
             return 0.0;
         }
+        double averageSalary;
         if (getGender() == Gender.MALE) {
-            double averageSalary = CalculatorUtils.calculateAverage(minSalary, maxSalary);
-            return averageSalary * PENSION_COEFFICIENT;
-        } else if (getGender() == Gender.FEMALE) {
-            double averageSalary = CalculatorUtils.calculateAverage(minSalary / 2, maxSalary * 2);
-            return averageSalary * PENSION_COEFFICIENT;
+            averageSalary = CalculatorUtils.calculateAverage(minSalary, maxSalary);
+        } else {
+            averageSalary = CalculatorUtils.calculateAverage(minSalary / 2, maxSalary * 2);
         }
-        return 0.0;
+
+        double aditionalMoney = 0.0;
+
+        if (proffessions != null) {
+            int countProffessions = proffessions.size();
+            aditionalMoney = countProffessions / COUNT_OF_PROFS * ADDITIONAL_COEFFICIENT;
+        }
+
+
+        return averageSalary * PENSION_COEFFICIENT * aditionalMoney;
     }
 
 

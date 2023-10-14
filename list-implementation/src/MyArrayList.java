@@ -14,9 +14,48 @@ public class MyArrayList {
         if (size == array.length) {
             grow();
         }
+
         array[size] = value;
         size++;
     }
+
+    public void add(int index, int value) {
+        if (index < 0 && index >= size) {
+            return;
+        }
+
+        if (size == array.length) {
+            grow();
+        }
+
+        int lastIndex = size - 1;
+
+        for (int i = lastIndex; i >= index; i--) {
+            array[i + 1] = array[i];
+        }
+
+        array[index] = value;
+        size++;
+    }
+
+    public void remove(int index) {
+        if (index < 0 && index >= size) {
+            return;
+        }
+
+        System.out.println("Start");
+
+        for (int i = index + 1; i < size; i++) {
+            array[i - 1] = array[i];
+            System.out.println(toString());
+        }
+
+        array[size - 1] = 0;
+        size--;
+
+        System.out.println("Finish");
+    }
+
 
     private void grow() {
         int[] newArray = new int[array.length * 2];
@@ -28,29 +67,26 @@ public class MyArrayList {
         array = newArray;
     }
 
-    //contains():
     public boolean contains(int element) {
         for (int i = 0; i < size; i++) {
             if (array[i] == element) {
                 return true;
             }
         }
+
         return false;
     }
 
-
-    public void remove(int index) {
-        for (int i = index; i < array.length - 1; i++) {
-            array[i] = array[i + 1];
-        }
-        array[array.length - 1] = 0;
-        size--;
+    public int size() {
+        return size;
     }
 
 
-    //size():
+    //size();
     //remove(index)
     //add(index, 5)
+
+
     @Override
     public String toString() {
         return "MyArrayList{" +
@@ -58,4 +94,5 @@ public class MyArrayList {
                 ", size=" + size +
                 '}';
     }
+
 }

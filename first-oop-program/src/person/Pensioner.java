@@ -43,7 +43,9 @@ public class Pensioner extends Person {
 
     @Override
     public int hashCode() {
-        return pension != null ? pension.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (pension != null ? pension.hashCode() : 0);
+        return result;
     }
 
     @Override

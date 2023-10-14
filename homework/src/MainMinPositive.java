@@ -17,7 +17,6 @@ public class MainMinPositive {
             }
         }
         System.out.println();
-
         int minPositive = Integer.MAX_VALUE;
         for (int value : list) {
             if (value > 0 && value < minPositive) {
