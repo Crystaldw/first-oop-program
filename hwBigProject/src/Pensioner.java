@@ -4,20 +4,29 @@ public class Pensioner extends Person{
 
     private int pension;
 
-    public Pensioner(String naame, int age, double weight, int height) {
-        super(naame, age, weight, height);
+    public Pensioner(String name, int age, double weight, int height, int pension) {
+        super(name, age, weight, height);
+        this.pension = pension;
+    }
+
+    public int getPension() {
+        return pension;
+    }
+
+    public void setPension(int pension) {
+        this.pension = pension;
     }
 
     @Override
     public void die() {
         int age = getAge();
         int result = (age - 50) * pension;
-        System.out.println("Этот пенсионер умерб он заработал: " + result);
+        System.out.println("Этот пенсионер умер, он заработал: " + result);
     }
 
     @Override
     public void die(int years) {
-        System.out.println("Зтот пенсионер умрет через " + years + " лет");
+        System.out.println("Этот пенсионер умрет через " + years + " лет");
     }
 
     @Override

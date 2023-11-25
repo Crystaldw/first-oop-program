@@ -2,41 +2,43 @@ import java.util.Objects;
 
 public abstract class Person {
 
-    private String naame;
-
+    private String name;
     private int age;
-
     private double weight;
-
     private int height;
-
     private double money;
-
     private Gender gender;
-
     private Person dad;
 
-    public Person(String naame, int age, double weight, int height) {
-        this.naame = naame;
+    public Person(String name, int age, double weight, int height) {
+        this.name = name;
         this.age = age;
         this.weight = weight;
         this.height = height;
     }
-
-    public Person(String naame, Gender gender) {
+    public Person(){
 
     }
 
-    public void printInfo() {
-        System.out.println("Имя человека " + naame);
-        System.out.println("Возраст человека +" + age);
+    public Person(String name, Gender gender) {
+
+    }
+
+    public void getInfoPerson() {
+        System.out.println("__________________________");
+        System.out.println("Имя человека " + name);
+        System.out.println("Возраст человека " + age);
+        System.out.println("Рост человека " + height);
+        System.out.println("Вес человека " + weight);
+        System.out.println("___________________________");
+
     }
 
     public void goToWork() {
         if (age < 18 || age > 70) {
-            System.out.println("Отдхаю");
+            System.out.println("Отдхаю дома");
         } else {
-            System.out.println("Вот блин... работа");
+            System.out.println("Работаю");
         }
     }
 
@@ -46,12 +48,12 @@ public abstract class Person {
 
     public abstract void die(int years);
 
-    public String getNaame() {
-        return naame;
+    public String getName() {
+        return name;
     }
 
-    public void setNaame(String naame) {
-        this.naame = naame;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -113,7 +115,7 @@ public abstract class Person {
         if (Double.compare(weight, person.weight) != 0) return false;
         if (height != person.height) return false;
         if (Double.compare(money, person.money) != 0) return false;
-        if (!Objects.equals(naame, person.naame)) return false;
+        if (!Objects.equals(name, person.name)) return false;
         if (gender != person.gender) return false;
         return Objects.equals(dad, person.dad);
     }
@@ -122,7 +124,7 @@ public abstract class Person {
     public int hashCode() {
         int result;
         long temp;
-        result = naame != null ? naame.hashCode() : 0;
+        result = name != null ? name.hashCode() : 0;
         result = 31 * result + age;
         temp = Double.doubleToLongBits(weight);
         result = 31 * result + (int) (temp ^ (temp >>> 32));

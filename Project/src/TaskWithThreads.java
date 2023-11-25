@@ -10,5 +10,5 @@ public class TaskWithThreads {
         long finish = System.currentTimeMillis();
 
         System.out.println(finish - start + " ms.");
-    }
+    });
 }

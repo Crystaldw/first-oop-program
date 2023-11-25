@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GeneratorFunds" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" singleton="true" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="GeneratorFunds" />
+    <module name="hwBigProject" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

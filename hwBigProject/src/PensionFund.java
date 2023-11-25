@@ -1,9 +1,6 @@
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 //Protected
 //Классы упаковщики
@@ -25,6 +22,19 @@ public class PensionFund {
         this.dateOfCreation = dateOfCreation;
         this.persons = persons;
         this.workDays = new HashMap<>();
+    }
+    public PensionFund(String name, boolean isState, String dateOfCreation) {
+        this.name = name;
+        this.isState = isState;
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public PensionFund (String string){
+        String[] arrayFunds = string.split(" ");
+        this.name = arrayFunds[0] + " " + arrayFunds[1]+ " "+ arrayFunds[2]+" "+arrayFunds[3];
+        this.dateOfCreation = arrayFunds[4];
+        this.isState = arrayFunds[5].equals("true");
+
     }
 
     public Map<DayOfWeek, Boolean> getWorkDays() {
@@ -84,10 +94,11 @@ public class PensionFund {
                 ", isState=" + isState +
                 ", dateOfCreation='" + dateOfCreation + '\'' +
                 ", persons=" + persons +
+                ", workDays=" + workDays +
                 '}';
     }
 
-    public void info() {
+    public void fundInfo() {
         System.out.println("Имя фонда " + name);
 
         int count = (persons != null) ? persons.size() : 0;

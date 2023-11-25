@@ -1,3 +1,5 @@
+package person;
+
 public class CalculatorUtils {
 
     public static double calculateAverage(int first, int second) {

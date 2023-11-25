@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8bd166cc-101a-4a37-a4fb-4c605f64a312" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Project/src/DeadlockExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/MagicMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/MyThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/ThreadExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/ThreadMainExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project/src/interruptedExeption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThreadTraining/src/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hwBigProject/src/GeneratirWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogoda/src/main/java/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/pogoda/src/main/java/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/src/TaskWithThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project/src/TaskWithThreads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../first-oop-program/src/person/AbleToCalculatePension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../first-oop-program/src/person/AbleToCalculatePension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../first-oop-program/src/person/CalculatorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../first-oop-program/src/person/CalculatorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/files/filefund.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/files/filefund.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/files/fileperson.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/files/fileperson.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/src/GeneratorFunds.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/src/GeneratorFunds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/src/GeneratorPersons.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/src/ReaderFilePerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/src/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hwBigProject/src/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hwBigProject/src/Worker.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2YOOBABNjoc1qVPUatzOxLI79st" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Crystalbud/IdeaProjects/Project"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bd166cc-101a-4a37-a4fb-4c605f64a312" name="Changes" comment="" />
+      <created>1700393020281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700393020281</updated>
+    </task>
+    <servers />
+  </component>
+</project>
