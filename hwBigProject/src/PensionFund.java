@@ -14,7 +14,19 @@ public class PensionFund {
 
     private List<Worker> persons;
 
-    private Map<DayOfWeek, Boolean> workDays;
+    private static Map<DayOfWeek, Boolean> workDays = createWorkDays();
+
+    public static Map<DayOfWeek, Boolean> createWorkDays(){
+        Map<DayOfWeek, Boolean> workDays = new HashMap<>();
+        workDays.put(DayOfWeek.MONDAY, true);
+        workDays.put(DayOfWeek.THURSDAY, true);
+        workDays.put(DayOfWeek.WEDNESDAY, true);
+        workDays.put(DayOfWeek.TUESDAY, true);
+        workDays.put(DayOfWeek.FRIDAY, true);
+        workDays.put(DayOfWeek.SATURDAY, true);
+        workDays.put(DayOfWeek.SUNDAY, true);
+        return workDays;
+    }
 
     public PensionFund(String name, boolean isState, String dateOfCreation, List<Worker> persons) {
         this.name = name;
@@ -34,6 +46,7 @@ public class PensionFund {
         this.name = arrayFunds[0] + " " + arrayFunds[1]+ " "+ arrayFunds[2]+" "+arrayFunds[3];
         this.dateOfCreation = arrayFunds[4];
         this.isState = arrayFunds[5].equals("true");
+        this.persons = GeneratorWorkers.generateWorkers();
 
     }
 
@@ -93,7 +106,7 @@ public class PensionFund {
                 "name='" + name + '\'' +
                 ", isState=" + isState +
                 ", dateOfCreation='" + dateOfCreation + '\'' +
-                ", persons=" + persons +
+                ", persons=" + persons.size() +
                 ", workDays=" + workDays +
                 '}';
     }
