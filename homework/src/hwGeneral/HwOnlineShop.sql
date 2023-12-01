@@ -24,10 +24,13 @@ WHERE
         Price <50
 
 4) Очистить поле ContactName у всех клиентов не из China
-
+UPDATE Customers
+SET ContactName = NULL
+WHERE
+NOT Country = 'China'
 5) Применить ко всем товарам постоянную скидку в 15%
 SELECT *,
-       Price * 0.85 AS Diskount 15%
+Price * 0.85 AS Price_low
 FROM Products
 
 6) Вывести товар, который находится на третьем месте среди самых дорогих
