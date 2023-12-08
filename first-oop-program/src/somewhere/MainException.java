@@ -1,13 +1,12 @@
 package somewhere;
 
 public class MainException {
-
     public static void main(String[] args) {
-        o();
+        a();
     }
 
-    private static void o() {
-        o();
+    private static void a() {
+        a();
     }
 
 }
