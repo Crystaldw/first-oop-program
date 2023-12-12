@@ -4,10 +4,10 @@
 
 
 CREATE TABLE reactions (
-		reaction_id int,
+    reaction_id int,
     created_at timestamp,
     value int,
-		author_id int,
+    author_id int,
     video_id int
 );
 
